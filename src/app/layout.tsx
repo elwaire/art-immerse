@@ -1,10 +1,34 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import {
+  Baloo_2,
+  Geist,
+  Geist_Mono,
+  Manrope,
+  Space_Mono,
+} from "next/font/google";
 import "./globals.css";
+
+const manrope = Manrope({
+  subsets: ["latin", "vietnamese"],
+  weight: ["600", "700", "800"],
+  variable: "--font-manrope",
+});
+
+const spaceMono = Space_Mono({
+  subsets: ["latin"],
+  weight: ["700"],
+  variable: "--font-mono-tag",
+});
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+});
+
+const baloo = Baloo_2({
+  subsets: ["latin", "vietnamese"],
+  weight: ["500", "600", "700", "800"],
+  variable: "--font-baloo",
 });
 
 const geistMono = Geist_Mono({
@@ -23,7 +47,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body
+        className={`${baloo.variable} ${manrope.variable} ${spaceMono.variable} antialiased`}
+      >
+        {children}
+      </body>
     </html>
   );
 }
